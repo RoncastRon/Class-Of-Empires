@@ -1,6 +1,7 @@
 package net.rocketware.main;
 import java.awt.*;
 import java.awt.event.*;
+import net.rocketware.main.UnitDebug;
 
 import javax.swing.*;
 
@@ -14,6 +15,10 @@ public class UserInterface extends JPanel implements MouseListener, MouseMotionL
 		this.setBackground(Color.WHITE);
 		g.setColor(Color.RED);
 		g.drawOval(x-10,y-10,20,20);
+		g.setColor(Color.BLUE);
+		UnitDebug.MoveUnit(x, y);
+		g.fillOval(UnitDebug.currentX, UnitDebug.currentY, 15, 15);
+		repaint();
 	}
 
 	@Override
