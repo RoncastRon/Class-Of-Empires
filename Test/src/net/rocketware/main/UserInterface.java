@@ -1,6 +1,8 @@
 package net.rocketware.main;
 import java.awt.*;
 import java.awt.event.*;
+import java.util.concurrent.TimeUnit;
+
 import net.rocketware.main.UnitDebug;
 
 import javax.swing.*;
@@ -17,7 +19,19 @@ public class UserInterface extends JPanel implements MouseListener, MouseMotionL
 		g.drawOval(x-10,y-10,20,20);
 		g.setColor(Color.BLUE);
 		UnitDebug.MoveUnit(x, y);
-		g.fillOval(UnitDebug.currentX, UnitDebug.currentY, 15, 15);
+		g.fillOval(UnitDebug.currentX+5, UnitDebug.currentY+5, 10, 10);
+		g.drawString("debug", UnitDebug.currentX+5, UnitDebug.currentY+5);
+		g.setColor(Color.RED);
+		g.fillRect(UnitDebug.currentX+5, UnitDebug.currentY+20, 20, 4);
+		g.setColor(Color.GREEN);
+		g.fillRect(UnitDebug.currentX+5, UnitDebug.currentY+20, UnitDebug.HP*2, 4);
+		g.setColor(Color.BLUE);
+		g.drawString("HP: "+UnitDebug.HP, UnitDebug.currentX+5, UnitDebug.currentY+35);
+		try {
+			Thread.sleep(5);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 		repaint();
 	}
 
@@ -25,7 +39,6 @@ public class UserInterface extends JPanel implements MouseListener, MouseMotionL
 	public void mouseDragged(MouseEvent e) {
 		x = e.getX();
 		y = e.getY();
-		repaint();
 	}
 
 	@Override

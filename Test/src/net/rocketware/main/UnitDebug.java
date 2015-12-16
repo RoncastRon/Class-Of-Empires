@@ -8,10 +8,11 @@ public class UnitDebug{
 	static int currentX = 0;
 	static int vertical = -1; //-1 = down, 1 = up
 	static int horizontal = -1; //-1 = left, 1 = right
+	static int HP = 10;
 	
 	public static void MoveUnit(int x, int y){
-		targetX = x;
-		targetY = y;
+		targetX = x-10;
+		targetY = y-10;
 		if(currentY > targetY){
 			vertical = 1;
 		}
